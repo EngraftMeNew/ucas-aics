@@ -1,0 +1,17 @@
+sim/tb_inner_product.cpp:数据从 /mnt/c/CODE/dlp_ex_student/data/mv/* 加载；放宽数据量检查，允许读取到的值 ≥ 4。
+
+sim/tb_matrix_vector.cpp:数据从 /mnt/c/CODE/dlp_ex_student/data/mv/* 加载。
+
+sim/tb_matrix_mult.cpp:数据从 /mnt/c/CODE/dlp_ex_student/data/mm/* 加载。
+
+data/mv/:新增 config、neuron、weight、result(矩阵 * 向量 数据集)。
+
+data/mm/:新增 config、neuron、weight、result(矩阵 * 矩阵 数据集)；并更新 weight 的存储顺序，使其与 DUT(被测模块)的行/列使用方式一致。
+
+src/matrix_vector_mult_4x4x16.v:连接 4 个 inner_product_4x16 实例到 activations/weights/results。
+
+src/matrix_mult_4x4x4x16.v:连接 4 个 matrix_vector_mult_4x4x16 实例到 activations/weights/results。
+
+sim/Makefile:推导 ROOT_DIR/SRC_DIR/SIM_DIR;  TB 源文件使用显式的 SIM_DIR 路径；并在 sim/ 下增加/整理 VCD 波形文件清理逻辑。
+
+sim/compile.f:将路径更新为 /mnt/c/CODE/dlp_ex_student/src/*.v。
